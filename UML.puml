@@ -1,0 +1,66 @@
+@startuml test
+skinparam classAttributeIconSize 0
+class CLIENTS <<table1>> {
+-client_id : string
+-client_secret : string
+-client_name : string
+-active : string
+-short_description : string
+-full_description : text
+-logo_url : string
+-url : string
+-dpo : string
+-technical_contact : string
+-commercial_contact : string
+}
+class CLIENTS_GRANTS <<table2>> {
+-client_id : string
+-install_id : int
+-active : string
+-perms : text
+' champ précédent au format json (concerne la gestion du planning des équipes,
+' la vente des boissons, l'envoie de newsletter, promotion de la salle...)
+-branch_id : int
+}
+class INSTALL_PERM <<table3>> {
+-branch_id : string
+-install_id: int
+-client_id : string
+-members_read : int
+-members_write : int
+-members_add : int
+-members_products_add : int
+-members_payment_schedules_read : int
+-members_statistics_read : int
+-members_subscription_read : int
+-payment_schedules_read : int
+-payment_schedules_write : int
+-payment_day_read : int
+}
+class BRANCHES <<table4>> {
+-branch_id : int
+-active : string
+-zipcode : int
+}
+class USERS <<table5>> {
+-id : int
+-name : string
+-email : string
+-password : string
+-role : string 
+' il y a 4 roles (tech_team de l'Orange bleue qui est notre client,
+' partenaire, structure, personne lambda)
+-manage : string
+}
+
+CLIENTS_GRANTS "1" *- "*" INSTALL_PERM
+CLIENTS "1" -- "1" CLIENTS_GRANTS
+BRANCHES "1" -- "1" CLIENTS_GRANTS
+
+hide <<table1>> circle
+hide <<table2>> circle
+hide <<table3>> circle
+hide <<table4>> circle
+hide <<table5>> circle
+
+@enduml
