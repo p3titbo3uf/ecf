@@ -1,4 +1,12 @@
-bin/console doctrine:query:sql "INSERT INTO users VALUES (NULL, 'admin', 'admin@orangeblue.com', '\$argon2id\$v=19\$m=65536,t=4,p=1\$fy4R2VdGKR7CiJtCTnanOQ\$j4vnYxc9TqSOk+d5bYYYz/fi2EEGWTdTuI784b5ZW3I', '["ROLE_TECH"]');" => mdp = admin
+# Installation instructions of the project
+
+-   `composer install`
+-   créer la base de données sur le serveur de test
+-   mettre à jour le fichier .env pour connecter le projet à une base de données
+-   installer les tables du projet sur la BDD grâce à `php bin/console doctrine:migrations:migrate`
+-   php bin/console doctrine:query:sql "INSERT INTO `users` (`id`, `firstname`, `lastname`, `email`, `password`, `roles`) VALUES (null, 'Robert', 'Hue', 'robert@hue.fr', '$2y$13$2kH3tw9avvxHP/UeGlRxue7y1A2RUAPSX8FZw9iy8PCkth3Gk/Dei', '[\"ROLE_TECH\"]');"
+    mdp => azerty
+-   symfony server:start
 
 sécurité : connextion :
 avec email (donc unique)

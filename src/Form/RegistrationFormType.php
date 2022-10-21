@@ -80,6 +80,7 @@ class RegistrationFormType extends AbstractType
                             'Yes' => 'ROLE_STRUCTURE'
                         ),
                     ),
+                    'expanded' => false,
                     'multiple' => true,
                     'required' => true,
                 )

@@ -4,7 +4,7 @@ class CLIENTS <<table1>> {
 -client_id : string
 -client_secret : string
 -client_name : string
--active : string
+-active : bool
 -short_description : string
 -full_description : text
 -logo_url : string
@@ -55,7 +55,7 @@ class USERS <<table5>> {
 
 CLIENTS_GRANTS "1" *- "*" INSTALL_PERM
 CLIENTS "1" -- "1" CLIENTS_GRANTS
-BRANCHES "1" -- "1" CLIENTS_GRANTS
+BRANCHES "0..*" -- "1" CLIENTS_GRANTS
 
 hide <<table1>> circle
 hide <<table2>> circle
