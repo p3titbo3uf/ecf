@@ -21,6 +21,7 @@ final class Version20221020082514 extends AbstractMigration
     {
         // this up() migration is auto-generated, please modify it to your needs
         $this->addSql('CREATE TABLE `users` (id INT AUTO_INCREMENT NOT NULL, firstname VARCHAR(255) NOT NULL, lastname VARCHAR(255) NOT NULL, email VARCHAR(180) NOT NULL, password VARCHAR(255) NOT NULL, roles LONGTEXT NOT NULL COMMENT \'(DC2Type:json)\', UNIQUE INDEX UNIQ_8D93D649E7927C74 (email), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql("INSERT INTO `users` (`id`, `firstname`, `lastname`, `email`, `password`, `roles`) VALUES (null, 'Robert', 'Hue', 'robert@hue.fr', '$2y$13$2kH3tw9avvxHP/UeGlRxue7y1A2RUAPSX8FZw9iy8PCkth3Gk/Dei', '[\"ROLE_TECH\"]')");
     }
 
     public function down(Schema $schema): void
