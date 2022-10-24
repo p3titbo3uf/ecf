@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Page protégée
+{% block title %}Liste des clients
 {% endblock %}
 
 {% block body %}
@@ -19,19 +19,12 @@
 
 	<div class="example-wrapper">
 		<h1>Liste des clients</h1>
-
-		This friendly message is coming from:
-		<ul>
-			<li>Your controller at
-				<code>
-					<a href="{{ '/home/francois/Documents/B2_Symfony/11_security/src/Controller/MainController.php'|file_link(0) }}">src/Controller/MainController.php</a>
-				</code>
-			</li>
-			<li>Your template at
-				<code>
-					<a href="{{ '/home/francois/Documents/B2_Symfony/11_security/templates/main/index.html.twig'|file_link(0) }}">templates/main/index.html.twig</a>
-				</code>
-			</li>
-		</ul>
+		{% for c in clients %}
+			<ul>
+				<li>
+					{{ c.name }}
+				</li>
+			</ul>
+		{% endfor %}
 	</div>
 {% endblock %}

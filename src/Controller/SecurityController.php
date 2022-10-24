@@ -2,10 +2,12 @@
 
 namespace App\Controller;
 
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use App\Entity\Clients;
 
 class SecurityController extends AbstractController
 {
@@ -31,11 +33,15 @@ class SecurityController extends AbstractController
     }
 
     #[Route('/liste-des-clients')]
-    public function clientList(): Response
+    public function clientList(ManagerRegistry $doctrine): Response
     {
-        return $this->render('clientList/index.html.twig', [
-            'controller_name' => 'SecurityController',
-        ]);
+        $clients = $doctrine->getRepository(Clients::class)->findAll();
+        if (!$clients) {
+            throw $this->createNotFoundException(
+                'Il n\'y a pas de clients'
+            );
+        }
+        return $this->render('clientList/index.html.twig', ['clients' => $clients]);
     }
 
     #[Route('/client')]

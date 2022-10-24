@@ -13,3 +13,5 @@ on récupère le password (hash et salf tout ça)
 et on ajoute un badge, qui est un tableau qui contient le CSRF token, qui est un jeton de sécurité qui permet de vérifier que le formulaire vienne bien de notre site)
 
 symfony cast verify email pour envoyer un courriel
+
+list all routes : `php bin/console debug:router`

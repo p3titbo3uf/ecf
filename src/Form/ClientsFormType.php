@@ -6,10 +6,8 @@ use App\Entity\Clients;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints\IsTrue;
 
 class ClientsFormType extends AbstractType
 {
@@ -28,18 +26,18 @@ class ClientsFormType extends AbstractType
                 ],
                 'label' => 'Nom'
             ])
-            ->add('active', CheckboxType::class, [
-                'mapped' => false,
-                'attr' => [
-                    'class' => 'form-check-input'
-                ],
-                'label' => 'Actif ?',
-                'constraints' => [
-                    new IsTrue([
-                        'message' => 'You should agree to our terms.',
-                    ]),
-                ],
-            ])
+            ->add(
+                'active',
+                CheckboxType::class,
+                [
+                    // 'mapped' => false,
+                    'attr' => [
+                        'class' => 'form-check-input'
+                    ],
+                    'label' => 'Actif ?',
+                    'required' => false
+                ]
+            )
             ->add('short_description', TextType::class, [
                 'attr' => [
                     'class' => 'form-control'

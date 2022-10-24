@@ -8,8 +8,20 @@
 		<div class="row">
 			<div class="col">
 				<h1>Création d'un client</h1>
-				{{ form(form) }}
-				</div>
+				{{ form_start(form) }}
+				{{ form_row(form.secret) }}
+				{{ form_row(form.name) }}
+				{{ form_row(form.active) }}
+				{{ form_row(form.short_description) }}
+				{{ form_row(form.full_description) }}
+				{{ form_row(form.logo_url) }}
+				{{ form_row(form.url) }}
+				{{ form_row(form.dpo) }}
+				{{ form_row(form.technical_contact) }}
+				{{ form_row(form.commercial_contact) }}
+				<button type="submit" class="btn my-3">M'inscrire</button>
+				{{ form_end(form) }}
 			</div>
-		</section>
-	{% endblock %}
+		</div>
+	</section>
+{% endblock %}

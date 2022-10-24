@@ -21,7 +21,7 @@ class Clients
     private ?string $name = null;
 
     #[ORM\Column]
-    private ?bool $active = null;
+    private ?bool $active = false;
 
     #[ORM\Column(length: 255)]
     private ?string $short_description = null;
