@@ -13,11 +13,18 @@ class Branches
     #[ORM\Column]
     private ?int $id = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $name = null;
+
+    #[ORM\Column(length: 5)]
+    private ?int $zipcode = null;
+
     #[ORM\Column]
     private ?bool $active = null;
 
-    #[ORM\Column]
-    private ?int $zipcode = null;
+    #[ORM\ManyToOne(inversedBy: 'branches')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Clients $client = null;
 
     public function getId(): ?int
     {
@@ -44,6 +51,30 @@ class Branches
     public function setZipcode(int $zipcode): self
     {
         $this->zipcode = $zipcode;
+
+        return $this;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    public function getClient(): ?Clients
+    {
+        return $this->client;
+    }
+
+    public function setClient(Clients $client): self
+    {
+        $this->client = $client;
 
         return $this;
     }

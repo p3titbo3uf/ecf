@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Création d'une salle de sport
+{% endblock %}
+
+{% block body %}
+	<section class="container">
+		<div class="row">
+			<div class="col">
+				<h1>Création d'une salle de sport</h1>
+				{{ form_start(form) }}
+				{{ form_row(form.name) }}
+				{{ form_row(form.zipcode) }}
+				{{ form_row(form.active) }}
+				{{ form_row(form.client) }}
+				<button type="submit" class="btn my-3">M'inscrire</button>
+				{{ form_end(form) }}
+			</div>
+		</div>
+	</section>
+{% endblock %}

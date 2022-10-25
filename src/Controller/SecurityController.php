@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Branches;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -45,18 +46,18 @@ class SecurityController extends AbstractController
     }
 
     #[Route('/client')]
-    public function client(): Response
+    public function client(ManagerRegistry $doctrine): Response
     {
-        return $this->render('client/index.html.twig', [
-            'controller_name' => 'SecurityController',
-        ]);
+        $owns = $this->getUser()->getOwns();
+        $client = $doctrine->getRepository(Clients::class)->find($owns);
+        return $this->render('client/index.html.twig', ['client' => $client]);
     }
 
     #[Route('/branche')]
-    public function branche(): Response
+    public function branche(ManagerRegistry $doctrine): Response
     {
-        return $this->render('branche/index.html.twig', [
-            'controller_name' => 'SecurityController',
-        ]);
+        $manages = $this->getUser()->getManages();
+        $branche = $doctrine->getRepository(Branches::class)->find($manages);
+        return $this->render('branche/index.html.twig', ['branche' => $branche]);
     }
 }

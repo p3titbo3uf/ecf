@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ClientsRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -43,6 +45,14 @@ class Clients
 
     #[ORM\Column(length: 255)]
     private ?string $commercial_contact = null;
+
+    #[ORM\OneToMany(mappedBy: 'client', targetEntity: Branches::class)]
+    private Collection $branches;
+
+    public function __construct()
+    {
+        $this->branches = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -168,4 +178,34 @@ class Clients
 
         return $this;
     }
+
+    /**
+     * @return Collection<int, Branches>
+     */
+    public function getBranches(): Collection
+    {
+        return $this->branches;
+    }
+
+    public function addBranch(Branches $branch): self
+    {
+        if (!$this->branches->contains($branch)) {
+            $this->branches->add($branch);
+            $branch->setClient($this);
+        }
+
+        return $this;
+    }
+
+    // public function removeBranch(Branches $branch): self
+    // {
+    //     if ($this->branches->removeElement($branch)) {
+    //         // set the owning side to null (unless already changed)
+    //         if ($branch->getClient() === $this) {
+    //             $branch->setClient(null);
+    //         }
+    //     }
+
+    //     return $this;
+    // }
 }

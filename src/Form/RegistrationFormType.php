@@ -84,7 +84,21 @@ class RegistrationFormType extends AbstractType
                     'multiple' => true,
                     'required' => true,
                 )
-            );
+            )
+            ->add('manages', TextType::class, [
+                'attr' => [
+                    'class' => 'form-control'
+                ],
+                'required' => false,
+                'label' => 'Gère quelle salle de sport ? (vide si aucune)'
+            ])
+            ->add('owns', TextType::class, [
+                'attr' => [
+                    'class' => 'form-control'
+                ],
+                'required' => false,
+                'label' => 'Possède quelle salle(s) de sport ? (vide si aucune)'
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

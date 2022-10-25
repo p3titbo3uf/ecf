@@ -39,7 +39,9 @@ security:
         # - { path: ^/profile, roles: ROLE_USER }
         - { path: "^/liste-des-clients", roles: [ROLE_TECH] }
         - { path: "^/inscription", roles: [ROLE_TECH] }
+        - { path: "^/client-form", roles: [ROLE_TECH] }
         - { path: "^/client", roles: [ROLE_CLIENT] }
+        - { path: "^/branche-form", roles: [ROLE_CLIENT] }
         - { path: "^/branche", roles: [ROLE_STRUCTURE] }
 
 when@test:

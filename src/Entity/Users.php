@@ -33,6 +33,12 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private array $roles = [];
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $manages = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $owns = null;
+
     /**
      * @var string The hashed password
      */
@@ -126,6 +132,30 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     public function setRoles(array $roles): self
     {
         $this->roles = $roles;
+
+        return $this;
+    }
+
+    public function getManages(): ?string
+    {
+        return $this->manages;
+    }
+
+    public function setManages(?string $manages): self
+    {
+        $this->manages = $manages;
+
+        return $this;
+    }
+
+    public function getOwns(): ?string
+    {
+        return $this->owns;
+    }
+
+    public function setOwns(?string $owns): self
+    {
+        $this->owns = $owns;
 
         return $this;
     }
