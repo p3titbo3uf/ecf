@@ -13,6 +13,7 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method Branches|null findOneBy(array $criteria, array $orderBy = null)
  * @method Branches[]    findAll()
  * @method Branches[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Branches[]    findOneByOwns(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class BranchesRepository extends ServiceEntityRepository
 {
@@ -39,28 +40,29 @@ class BranchesRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return Branches[] Returns an array of Branches objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('b')
-//            ->andWhere('b.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('b.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    //    /**
+    //     * @return Branches[] Returns an array of Branches objects
+    //     */
+    //    public function findByExampleField($value): array
+    //    {
+    //        return $this->createQueryBuilder('b')
+    //            ->andWhere('b.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->orderBy('b.id', 'ASC')
+    //            ->setMaxResults(10)
+    //            ->getQuery()
+    //            ->getResult()
+    //        ;
+    //    }
 
-//    public function findOneBySomeField($value): ?Branches
-//    {
-//        return $this->createQueryBuilder('b')
-//            ->andWhere('b.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+    public function findOneByOwns($owns, $manages): ?Branches
+    {
+        return $this->createQueryBuilder('b')
+            ->andWhere('b.owns = :owns')
+            ->setParameter('owns', $owns)
+            ->andWhere('b.manages = :manages')
+            ->setParameter('manages', $manages)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
 }

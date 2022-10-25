@@ -19,6 +19,10 @@
 
 	<div class="example-wrapper">
 		<h1>Détail de la salle de sport</h1>
-		<p>{{ branche.name }}</p>
+		{% if noBranche is defined %}
+			{{ noBranche }}
+		{% else %}
+			<p>{{ branche.name }}</p>
+		{% endif %}
 	</div>
 {% endblock %}

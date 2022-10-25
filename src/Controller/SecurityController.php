@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use App\Entity\Clients;
+use App\Repository\BranchesRepository;
 
 class SecurityController extends AbstractController
 {
@@ -49,6 +50,8 @@ class SecurityController extends AbstractController
     public function client(ManagerRegistry $doctrine): Response
     {
         $owns = $this->getUser()->getOwns();
+        if (!$owns)
+            return $this->render('client/index.html.twig', ['noClient' => 'Cet utilisateur ne possède aucun client.']);
         $client = $doctrine->getRepository(Clients::class)->find($owns);
         return $this->render('client/index.html.twig', ['client' => $client]);
     }
@@ -56,8 +59,11 @@ class SecurityController extends AbstractController
     #[Route('/branche')]
     public function branche(ManagerRegistry $doctrine): Response
     {
+        $owns = $this->getUser()->getOwns();
         $manages = $this->getUser()->getManages();
-        $branche = $doctrine->getRepository(Branches::class)->find($manages);
+        $branche = $doctrine->getRepository(Branches::class)->findOneBy(['client' => $owns]);
+        if (!$manages)
+            return $this->render('branche/index.html.twig', ['noBranche' => 'Cet utilisateur ne gère aucunne salle de sport.']);
         return $this->render('branche/index.html.twig', ['branche' => $branche]);
     }
 }
