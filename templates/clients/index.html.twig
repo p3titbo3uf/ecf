@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Clients index{% endblock %}
+
+{% block body %}
+    <h1>Clients index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Secret</th>
+                <th>Name</th>
+                <th>Active</th>
+                <th>Short_description</th>
+                <th>Full_description</th>
+                <th>Logo_url</th>
+                <th>Url</th>
+                <th>Dpo</th>
+                <th>Technical_contact</th>
+                <th>Commercial_contact</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for client in clients %}
+            <tr>
+                <td>{{ client.id }}</td>
+                <td>{{ client.secret }}</td>
+                <td>{{ client.name }}</td>
+                <td>{{ client.active ? 'Yes' : 'No' }}</td>
+                <td>{{ client.shortDescription }}</td>
+                <td>{{ client.fullDescription }}</td>
+                <td>{{ client.logoUrl }}</td>
+                <td>{{ client.url }}</td>
+                <td>{{ client.dpo }}</td>
+                <td>{{ client.technicalContact }}</td>
+                <td>{{ client.commercialContact }}</td>
+                <td>
+                    <a href="{{ path('app_clients_show', {'id': client.id}) }}">show</a>
+                    <a href="{{ path('app_clients_edit', {'id': client.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="12">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_clients_new') }}">Create new</a>
+{% endblock %}

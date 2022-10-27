@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Branches index{% endblock %}
+
+{% block body %}
+    <h1>Branches index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Zipcode</th>
+                <th>Active</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for branch in branches %}
+            <tr>
+                <td>{{ branch.id }}</td>
+                <td>{{ branch.name }}</td>
+                <td>{{ branch.zipcode }}</td>
+                <td>{{ branch.active ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('app_branches_show', {'id': branch.id}) }}">show</a>
+                    <a href="{{ path('app_branches_edit', {'id': branch.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_branches_new') }}">Create new</a>
+{% endblock %}

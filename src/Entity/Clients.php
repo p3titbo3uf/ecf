@@ -95,6 +95,13 @@ class Clients
         return $this;
     }
 
+    public function getSwitchActive(string $id): self
+    {
+        $this->isActive() === true ? $this->setActive(false) : $this->setActive(true);
+
+        return $this;
+    }
+
     public function getShortDescription(): ?string
     {
         return $this->short_description;

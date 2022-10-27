@@ -37,6 +37,8 @@ security:
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
+        - { path: "^/branches", roles: [ROLE_TECH] }
+        - { path: "^/clients", roles: [ROLE_TECH] }
         - { path: "^/liste-des-clients", roles: [ROLE_TECH] }
         - { path: "^/inscription", roles: [ROLE_TECH] }
         - { path: "^/client-form", roles: [ROLE_TECH] }

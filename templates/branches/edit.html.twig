@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Branches{% endblock %}
+
+{% block body %}
+    <h1>Edit Branches</h1>
+
+    {{ include('branches/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_branches_index') }}">back to list</a>
+
+    {{ include('branches/_delete_form.html.twig') }}
+{% endblock %}

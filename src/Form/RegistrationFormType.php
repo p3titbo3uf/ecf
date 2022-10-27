@@ -8,6 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\RadioType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -66,24 +67,23 @@ class RegistrationFormType extends AbstractType
             ->add(
                 'roles',
                 ChoiceType::class,
-                array(
-                    'attr'  =>  array(
+                [
+                    'attr'  =>  [
                         'class' => 'form-control',
                         'style' => 'margin:5px 0;'
-                    ),
-                    'choices' =>
-                    array(
-                        'ROLE_CLIENT' => array(
-                            'Yes' => 'ROLE_CLIENT',
-                        ),
-                        'ROLE_STRUCTURE' => array(
-                            'Yes' => 'ROLE_STRUCTURE'
-                        ),
-                    ),
+                    ],
+                    'choices' => [
+                        'ROLE_CLIENT' => [
+                            'client' => 'ROLE_CLIENT',
+                        ],
+                        'ROLE_STRUCTURE' => [
+                            'structure' => 'ROLE_STRUCTURE'
+                        ],
+                    ],
                     'expanded' => false,
                     'multiple' => true,
                     'required' => true,
-                )
+                ]
             )
             ->add('manages', TextType::class, [
                 'attr' => [
