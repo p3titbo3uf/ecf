@@ -78,4 +78,16 @@ class Branches
 
         return $this;
     }
+
+    public function getClientsGrants(): ?ClientsGrants
+    {
+        return $this->clientsGrants;
+    }
+
+    public function setClientsGrants(?ClientsGrants $clientsGrants): self
+    {
+        $this->clientsGrants = $clientsGrants;
+
+        return $this;
+    }
 }

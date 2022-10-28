@@ -11,32 +11,32 @@
 	<div class="container-fluid">
 		<h1>Liste des clients</h1>
 		<div class='row'>
-			{% for c in clients %}
-				{# {{ dump(c.switchActive) }} #}
+			{% for client in clients %}
+				{# {{ dump(client.switchActive) }} #}
 				<div class='col-12 col-md-6 border rounded p2'>
 					<div class="row m-1">
-						<div class="col-5">{{ c.logoUrl }}
+						<div class="col-5">{{ client.logoUrl }}
 						</div>
 						<div class="col-7">
-							<p>{{ c.id }}</p>
-							<p>{{ c.name }}</p>
-							<p>{{ c.shortDescription }}</p>
-							<p>{{ c.url }}</p>
+							<p>{{ client.id }}</p>
+							<p>{{ client.name }}</p>
+							<p>{{ client.shortDescription }}</p>
+							<p>{{ client.url }}</p>
 						</div>
 					</div>
 					<div class='row m-1'>
-						<a href="{{ path('app_clients_edit', {'id': c.id}) }}">edit</a>
-						{# {% if c.active == true %}
-													<div class="form-check form-switch">
-														<input class="form-check-input" onclick="" role="switch" id="flexSwitchCheck{{c.id}}" checked>
-														<label class="form-check-label" for="flexSwitchCheck{{c.id}}">Actif ?</label>
-													</div>
-												{% else %}
-													<div class="form-check form-switch">
-														<input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheck{{c.id}}">
-														<label class="form-check-label" for="flexSwitchCheck{{c.id}}">Actif ?</label>
-													</div>
-												{% endif %} #}
+						<a href="{{ path('app_clients_edit', {'id': client.id}) }}">edit</a>
+						{# {% if client.active == true %}
+																									<div class="form-check form-switch">
+																										<input class="form-check-input" onclick="" role="switch" id="flexSwitchCheck{{client.id}}" checked>
+																										<label class="form-check-label" for="flexSwitchCheck{{client.id}}">Actif ?</label>
+																									</div>
+																								{% else %}
+																									<div class="form-check form-switch">
+																										<input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheck{{client.id}}">
+																										<label class="form-check-label" for="flexSwitchCheck{{client.id}}">Actif ?</label>
+																									</div>
+																								{% endif %} #}
 					</div>
 				</div>
 			{% endfor %}

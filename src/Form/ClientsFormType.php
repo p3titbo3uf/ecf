@@ -82,10 +82,9 @@ class ClientsFormType extends AbstractType
                 'label' => 'Contact commercial'
             ])
             ->add('branches', CollectionType::class, [
-                'attr' => [
-                    'class' => 'form-control'
-                ],
-                'required' => false,
+                'entry_type' => BranchesType::class,
+                'entry_options' => ['label' => false],
+                'allow_add' => true,
                 'label' => 'Liste des branches'
             ]);
     }

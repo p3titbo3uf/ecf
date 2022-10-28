@@ -54,15 +54,15 @@ class SecurityController extends AbstractController
         if (!$owns)
             return $this->render('client/index.html.twig', ['noClient' => 'Cet utilisateur ne possède aucun client.']);
         $client = $doctrine->getRepository(Clients::class)->find($owns);
-        return $this->render('client/index.html.twig', ['client' => $client]);
+        $branches = $doctrine->getRepository(Branches::class)->findBy(['client' => $owns]);
+        return $this->render('client/index.html.twig', ['client' => $client, 'branches' => $branches]);
     }
 
     #[Route('/branche')]
     public function branche(ManagerRegistry $doctrine): Response
     {
-        $owns = $this->getUser()->getOwns();
         $manages = $this->getUser()->getManages();
-        $branche = $doctrine->getRepository(Branches::class)->findOneBy(['client' => $owns]);
+        $branche = $doctrine->getRepository(Branches::class)->findOneBy(['id' => $manages]);
         if (!$manages)
             return $this->render('branche/index.html.twig', ['noBranche' => 'Cet utilisateur ne gère aucunne salle de sport.']);
         return $this->render('branche/index.html.twig', ['branche' => $branche]);

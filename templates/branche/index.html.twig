@@ -22,7 +22,10 @@
 		{% if noBranche is defined %}
 			{{ noBranche }}
 		{% else %}
-			<p>{{ branche.name }}</p>
+			<p>
+				{{ branche.getclient().getName() }}
+				{{ branche.getName() }}
+			</p>
 		{% endif %}
 	</div>
 {% endblock %}

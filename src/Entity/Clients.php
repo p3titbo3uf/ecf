@@ -47,6 +47,7 @@ class Clients
     private ?string $commercial_contact = null;
 
     #[ORM\OneToMany(mappedBy: 'client', targetEntity: Branches::class)]
+    #[ORM\JoinColumn(nullable: false)]
     private Collection $branches;
 
     public function __construct()
