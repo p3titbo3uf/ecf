@@ -57,7 +57,7 @@ class ClientsController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $clientsRepository->save($client, true);
 
-            return $this->redirectToRoute('app_clients_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_security_clientlist', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('clients/edit.html.twig', [
@@ -73,6 +73,6 @@ class ClientsController extends AbstractController
             $clientsRepository->remove($client, true);
         }
 
-        return $this->redirectToRoute('app_clients_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_security_clientlist', [], Response::HTTP_SEE_OTHER);
     }
 }

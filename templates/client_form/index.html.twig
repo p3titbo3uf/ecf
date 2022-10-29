@@ -19,8 +19,20 @@
 				{{ form_row(form.dpo) }}
 				{{ form_row(form.technical_contact) }}
 				{{ form_row(form.commercial_contact) }}
-				<button type="submit" class="btn my-3">M'inscrire</button>
+				{# {{ form_row(form.branches) }} #}
+				{# <ul id="clients_form_branches___name___active" data-prototype="{{ form_widget(form.branches.vars.prototype)|e }}" data-widget-tags="{{ '<li></li>'|e }}" data-widget-counter="{{ form.branches|length }}">
+																				
+																									{% for branche in form.branches %}
+																										<li>
+																											{{ form_errors(branche) }}
+																											{{ form_widget(branche) }}
+																										</li>
+																									{% endfor %}
+																								</ul> #}
+				{# {{ form_widget(form.branches.vars.prototype) }} #}
+					<button type="submit" class="btn my-3"> Créer un nouveau client</button>
 				{{ form_end(form) }}
+				<a href="{{ path('app_security_clientlist') }}">retour à la liste des clients</a>
 			</div>
 		</div>
 	</section>

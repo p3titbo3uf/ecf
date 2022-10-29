@@ -47,7 +47,7 @@ class Clients
     private ?string $commercial_contact = null;
 
     #[ORM\OneToMany(mappedBy: 'client', targetEntity: Branches::class)]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: false, referencedColumnName: 'id', name: 'branches')]
     private Collection $branches;
 
     public function __construct()

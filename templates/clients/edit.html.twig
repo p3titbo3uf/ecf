@@ -1,14 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Clients
+{% block title %}Modifier un client
 {% endblock %}
 
 {% block body %}
-	<h1>Edit Clients</h1>
+	<section class="container">
+		<div class="row">
+			<div class="col">
+				<h1>Modifier un client</h1>
 
-	{{ include('clients/_form.html.twig', {'button_label': 'Update'}) }}
+				{{ include('clients/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
 
-	<a href="{{ path('app_security_clientlist') }}">back to list</a>
+				<a href="{{ path('app_security_clientlist') }}">retour à la liste</a>
 
-	{{ include('clients/_delete_form.html.twig') }}
+				{{ include('clients/_delete_form.html.twig') }}
+			</div>
+		</div>
+	</section>
 {% endblock %}

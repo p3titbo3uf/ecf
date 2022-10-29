@@ -4,6 +4,8 @@ namespace App\Form;
 
 use App\Entity\Clients;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -13,16 +15,73 @@ class ClientsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('secret')
-            ->add('name')
-            ->add('active')
-            ->add('short_description')
-            ->add('full_description')
-            ->add('logo_url')
-            ->add('url')
-            ->add('dpo')
-            ->add('technical_contact')
-            ->add('commercial_contact')
+            ->add('secret', TextType::class, [
+                'attr' => [
+                    'class' => 'form-control'
+                ],
+                'label' => 'Secret'
+            ])
+            ->add('name', TextType::class, [
+                'attr' => [
+                    'class' => 'form-control'
+                ],
+                'label' => 'Nom'
+            ])
+            ->add(
+                'active',
+                CheckboxType::class,
+                [
+                    // 'mapped' => false,
+                    'attr' => [
+                        'class' => 'form-check-input'
+                    ],
+                    'label' => 'Actif ?',
+                    'required' => false
+                ]
+            )
+            ->add('short_description', TextType::class, [
+                'attr' => [
+                    'class' => 'form-control'
+                ],
+                'label' => 'Description courte'
+            ])
+            ->add('full_description', TextType::class, [
+                'attr' => [
+                    'class' => 'form-control'
+                ],
+                'label' => 'Description longue'
+            ])
+            ->add('logo_url', TextType::class, [
+                'attr' => [
+                    'class' => 'form-control'
+                ],
+                'label' => 'Lien vers le logo du client',
+                'required' => false
+            ])
+            ->add('url', TextType::class, [
+                'attr' => [
+                    'class' => 'form-control'
+                ],
+                'label' => 'Lien vers le site du client'
+            ])
+            ->add('dpo', TextType::class, [
+                'attr' => [
+                    'class' => 'form-control'
+                ],
+                'label' => 'Contact protetion des données (DPO)'
+            ])
+            ->add('technical_contact', TextType::class, [
+                'attr' => [
+                    'class' => 'form-control'
+                ],
+                'label' => 'Contact technique'
+            ])
+            ->add('commercial_contact', TextType::class, [
+                'attr' => [
+                    'class' => 'form-control'
+                ],
+                'label' => 'Contact commercial'
+            ])
             // ->add('branches', CollectionType::class)
         ;
     }

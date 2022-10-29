@@ -81,12 +81,13 @@ class ClientsFormType extends AbstractType
                 ],
                 'label' => 'Contact commercial'
             ])
-            ->add('branches', CollectionType::class, [
-                'entry_type' => BranchesType::class,
-                'entry_options' => ['label' => false],
-                'allow_add' => true,
-                'label' => 'Liste des branches'
-            ]);
+            // ->add('branches', CollectionType::class, [
+            //     'entry_type' => BranchesType::class,
+            //     'allow_add' => true,
+            //     'allow_delete' => true,
+            //     'label' => 'Liste des branches'
+            // ])
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
