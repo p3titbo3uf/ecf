@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ClientsGrants index{% endblock %}
+
+{% block body %}
+    <h1>ClientsGrants index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Perms</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for clients_grant in clients_grants %}
+            <tr>
+                <td>{{ clients_grant.id }}</td>
+                <td>{{ clients_grant.perms }}</td>
+                <td>
+                    <a href="{{ path('app_clients_grants_show', {'id': clients_grant.id}) }}">show</a>
+                    <a href="{{ path('app_clients_grants_edit', {'id': clients_grant.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_clients_grants_new') }}">Create new</a>
+{% endblock %}
