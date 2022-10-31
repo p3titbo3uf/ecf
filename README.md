@@ -1,6 +1,18 @@
 # Table des matières
 
-[TOC]
+- [Table des matières](#table-des-matières)
+- [Notion](#notion)
+- [Description](#description)
+- [Exigences](#exigences)
+  - [Téléchargez Symfony CLI](#téléchargez-symfony-cli)
+  - [Mais surtout téléchargez Composer](#mais-surtout-téléchargez-composer)
+- [Récupération du projet](#récupération-du-projet)
+- [Installation](#installation)
+- [Installation des dépendances](#installation-des-dépendances)
+- [Création de la base de donnees](#création-de-la-base-de-donnees)
+- [Création des tables](#création-des-tables)
+- [Utilisation](#utilisation)
+    [Tester le projet](#tester-le-projet)
 
 # Notion
 
@@ -58,11 +70,4 @@ Pour lancer le serveur :
 
     symfony server:start
 
-Un utilisateur est déjà présent dans la base de données : robert@hue.fr dont le mot de passe est `azerty`
-
-sécurité : connextion :
-avec email (donc unique)
-on récupère le password (hash et salf tout ça)
-et on ajoute un badge, qui est un tableau qui contient le CSRF token, qui est un jeton de sécurité qui permet de vérifier que le formulaire vienne bien de notre site)
-
-symfony cast verify email pour envoyer un courriel
+Un utilisateur est déjà présent dans la base de données : robert@hue.fr dont le mot de passe est `azerty`.
