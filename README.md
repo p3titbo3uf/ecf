@@ -1,12 +1,3 @@
-# Instructions d'installation du project
-
--   `composer install`
--   créer la base de données sur le serveur de test
--   mettre à jour le fichier .env pour connecter le projet à une base de données
--   installer les tables du projet sur la BDD grâce à `php bin/console doctrine:migrations:migrate`
--   un utilisateur est déjà présent dans la base de données : robert@hue.fr dont le mot de passe est `azerty`
--   `symfony server:start`
-
 sécurité : connextion :
 avec email (donc unique)
 on récupère le password (hash et salf tout ça)
@@ -19,36 +10,25 @@ vider le cache : `php bin/console cache:clear --env=dev`
 
 # Table des matières
 
-[Notion](#notion)
-[Description](#description)
-[Exigences](#exigences)
-[Récupération du projet](#recuperation-du-projet)
-[Installation](#installation)
-[Installation des dépendances](#installation-des-dependances)
-[Création de la base de donnée](#creation-de-la-base-de-donnees)
-[Création des tables](#creation-des-tables)
-[Utilisation](#utilisation)
-[Tester le projet](#tester-le-projet)
+[TOC]
 
 # Notion
 
-Bien le bonjour mon brave. Le lien vers les quelques (grossières) étapes & réfléxions qui m'ont traversées l'esprit durant ce projet sont ici : Notion
+Il s'agit là d'un projet académique, je suis encore à l'étape de l'apprentissage de la force.
 
 # Description
 
-Les documents annexes sont disponibles dans le dossier ANNEXES :
+Les documents annexes sont disponibles dans le dossier Annexes :
 
-    Charte graphique
-    Manuel d'utilisation
-    Documentation technique
-    Wireframes
+    Schéma relationel
 
 # Exigences
 
 ## Téléchargez Symfony CLI
 
 Pour vérifier si vous réunissez toutes les conditions requises avant d'installer ce projet :
-`symfony check:requirements`
+
+    symfony check:requirements
 
 ## Mais surtout téléchargez Composer
 
@@ -56,36 +36,36 @@ Vous trouverez facielement sur internet une documtation pour l'installer avec un
 
 # Récupération du projet
 
-`git clone https://github.com/p3titbo3uf/ecf`
+    git clone https://github.com/p3titbo3uf/ecf
 
 # Installation
 
 Déplacement dans le dossier
 
-`cd ecf`
+    cd ecf
 
 # Installation des dépendances
 
-`composer install`
+    composer install
 
 # Création de la base de donnees
 
-`php bin/console doctrine:database:create`
+S'assurer que le fichier env pointe vers une base de données qui existe.
+
+    php bin/console doctrine:database:create
 
 # Création des tables
 
-`php bin/console doctrine:migrations:migrate`
+    php bin/console doctrine:migrations:migrate
+
 OU
-`php bin/console doctrine:schema:update --force`
+
+    php bin/console doctrine:schema:update --force
 
 # Utilisation
 
 Pour lancer le serveur :
 
-`php bin/console server:start`
+    symfony server:start
 
-# Tester le projet
-
-Pour obtenir des liens de connexions :
-
-contactez-moi par courriel : petit.boeuf@laposte.net
+Un utilisateur est déjà présent dans la base de données : robert@hue.fr dont le mot de passe est `azerty`

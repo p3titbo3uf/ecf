@@ -5,9 +5,13 @@
 
 {% block body %}
 	<section class="container">
-		<div class="row">
-			<a href="{{ path('app_security_clientlist') }}">Liste partenaires</a>
-		</div>
+		{% for role in app.user.roles %}
+			{% if app.user == 'ROLE_CLIENT' %}
+				<div class="row">
+					<a href="{{ path('app_security_clientlist') }}">Liste partenaires</a>
+				</div>
+			{% endif %}
+		{% endfor %}
 		<div class="row">
 			<div class='col border rounded p2'>
 				<div class="row">
@@ -87,5 +91,6 @@
 				</div>
 			</div>
 		{% endfor %}
+		<a href="{{ path('app_clients_new') }}">Create new</a>
 	</section>
 {% endblock %}
