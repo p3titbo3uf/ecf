@@ -24,7 +24,6 @@ class ClientsGrantsType extends AbstractType
                         'class' => 'form-control'
                     ],
                     'label' => 'Permissions',
-                    'data' => '{ "members_read": 0, "members_write": 0, "members_payment_schedules_read": 0, "members_products_read": 0, "members_schedules_read": 0, "members_add": 0, "payment_schedules_read": 0, "payment_schedules_write": 0, "members_statistic_read": 0, "payment_day_read": 0 }'
                 ]
             )
             ->add(

@@ -18,7 +18,7 @@ class ClientsGrants
     private ?Clients $client = null;
 
     #[ORM\ManyToOne]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?Branches $branch = null;
 
     #[ORM\Column(length: 255)]

@@ -4,13 +4,15 @@ namespace App\Controller;
 
 use App\Entity\Clients;
 use App\Form\ClientsType;
+use App\Repository\BranchesRepository;
+use App\Repository\ClientsGrantsRepository;
 use App\Repository\ClientsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route(path: '/clients')]
+#[Route(path: '/client')]
 class ClientsController extends AbstractController
 {
     #[Route(path: '/', name: 'app_clients_index', methods: ['GET'])]
@@ -41,10 +43,12 @@ class ClientsController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_clients_show', methods: ['GET'])]
-    public function show(Clients $client): Response
+    public function show(Clients $client, BranchesRepository $branchesRepository, ClientsGrantsRepository $clientsGrantsRepository, $id): Response
     {
         return $this->render('clients/show.html.twig', [
             'client' => $client,
+            'branches' => $branchesRepository->findBy(['client' => $id]),
+            'clients_grants' => $clientsGrantsRepository->findBy(['client' => ['id' => $id]]),
         ]);
     }
 

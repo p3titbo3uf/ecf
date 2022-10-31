@@ -22,7 +22,6 @@ final class Version20221029090257 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->addSql('ALTER TABLE clients_grants DROP FOREIGN KEY FK_617A1331DCD6CC49');
         $this->addSql('ALTER TABLE clients_grants DROP FOREIGN KEY FK_617A133119EB6921');
-        $this->addSql('ALTER TABLE clients_grants CHANGE id id INT AUTO_INCREMENT NOT NULL, CHANGE perms perms VARCHAR(255) NOT NULL, ADD PRIMARY KEY (id)');
         $this->addSql('DROP INDEX fk_617a133119eb6921 ON clients_grants');
         $this->addSql('CREATE INDEX IDX_617A133119EB6921 ON clients_grants (client_id)');
         $this->addSql('DROP INDEX fk_617a1331dcd6cc49 ON clients_grants');

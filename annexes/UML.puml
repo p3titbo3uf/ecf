@@ -1,9 +1,9 @@
 @startuml test
 skinparam classAttributeIconSize 0
 class CLIENTS <<table1>> {
--client_id : string
--client_secret : string
--client_name : string
+-id : int
+-secret : string
+-name : string
 -active : bool
 -short_description : string
 -full_description : text
@@ -14,52 +14,42 @@ class CLIENTS <<table1>> {
 -commercial_contact : string
 }
 class CLIENTS_GRANTS <<table2>> {
--client_id : string
--install_id : int
--active : string
--perms : text
+-id : int
+-client_id : int
+-perms : longtext
+-branch_id : int
 ' champ précédent au format json (concerne la gestion du planning des équipes,
 ' la vente des boissons, l'envoie de newsletter, promotion de la salle...)
--branch_id : int
-}
-class INSTALL_PERM <<table3>> {
--branch_id : string
--install_id: int
--client_id : string
--members_read : int
--members_write : int
--members_add : int
--members_products_add : int
--members_payment_schedules_read : int
--members_statistics_read : int
--members_subscription_read : int
--payment_schedules_read : int
--payment_schedules_write : int
--payment_day_read : int
 }
 class BRANCHES <<table4>> {
--branch_id : int
+-id : int
 -active : string
 -zipcode : int
+-client_id : int
+-name : string
 }
 class USERS <<table5>> {
 -id : int
--name : string
+-firstname : string
+-lastname : string
 -email : string
 -password : string
 -role : string 
-' il y a 4 roles (tech_team de l'Orange bleue qui est notre client,
-' partenaire, structure, personne lambda)
+' il y a 4 roles (tech de l'Orange bleue qui est notre client,
+' client (les clients de l'Orange bleue), structure (les salles de sport), personne lambda)
 -manage : string
+' gère une salle de sport
+-owns : string
+' est le client de l'Orange bleue (si manage est vide)
 }
 
-CLIENTS_GRANTS "1" *- "*" INSTALL_PERM
 CLIENTS "1" -- "1" CLIENTS_GRANTS
 BRANCHES "0..*" -- "1" CLIENTS_GRANTS
+CLIENTS "1" -- "1" USERS
+BRANCHES "1" -- "1" USERS
 
 hide <<table1>> circle
 hide <<table2>> circle
-hide <<table3>> circle
 hide <<table4>> circle
 hide <<table5>> circle
 

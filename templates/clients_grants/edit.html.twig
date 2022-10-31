@@ -1,13 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit ClientsGrants{% endblock %}
+{% block title %}Edit ClientsGrants
+{% endblock %}
 
 {% block body %}
-    <h1>Edit ClientsGrants</h1>
+	<h1>Edit ClientsGrants</h1>
 
-    {{ include('clients_grants/_form.html.twig', {'button_label': 'Update'}) }}
+	{{ include('clients_grants/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('app_clients_grants_index') }}">back to list</a>
+	<a href="{{ path('app_clients_show', {'id': clients_grant.client.id}) }}">back to list</a>
 
-    {{ include('clients_grants/_delete_form.html.twig') }}
+	{{ include('clients_grants/_delete_form.html.twig') }}
 {% endblock %}

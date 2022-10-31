@@ -7,15 +7,13 @@
 {% endblock %}
 {% block body %}
 	<style></style>
-
-	<div class="container-fluid">
+	<section class="container-fluid">
 		<div class="row">
 			<h1>Liste des clients</h1>
 			<a href="{{ path('app_client_form') }}">Créer un nouveau client</a>
 		</div>
 		<div class='row'>
 			{% for client in clients %}
-				{# {{ dump(client.switchActive) }} #}
 				<div class='col-12 col-md-6 border rounded p2'>
 					<div class="row m-1">
 						<div class="col-5">{{ client.logoUrl }}
@@ -29,7 +27,7 @@
 							<p>{{ client.url }}</p>
 						</div>
 					</div>
-					<div class='row m-1'>
+					<div class='row m-2'>
 						<div>
 							<a href="{{ path('app_clients_edit', {'id': client.id}) }}">modifier</a>
 						</div>
@@ -48,5 +46,5 @@
 				</div>
 			{% endfor %}
 		</div>
-	</div>
+	</section>
 {% endblock %}

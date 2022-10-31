@@ -15,3 +15,4 @@ et on ajoute un badge, qui est un tableau qui contient le CSRF token, qui est un
 symfony cast verify email pour envoyer un courriel
 
 list all routes : `php bin/console debug:router`
+vider le cache : `php bin/console cache:clear --env=dev`

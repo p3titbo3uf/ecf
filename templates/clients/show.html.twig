@@ -1,62 +1,91 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Clients{% endblock %}
+{% block title %}Client
+{% endblock %}
 
 {% block body %}
-    <h1>Clients</h1>
-
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ client.id }}</td>
-            </tr>
-            <tr>
-                <th>Secret</th>
-                <td>{{ client.secret }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ client.name }}</td>
-            </tr>
-            <tr>
-                <th>Active</th>
-                <td>{{ client.active ? 'Yes' : 'No' }}</td>
-            </tr>
-            <tr>
-                <th>Short_description</th>
-                <td>{{ client.shortDescription }}</td>
-            </tr>
-            <tr>
-                <th>Full_description</th>
-                <td>{{ client.fullDescription }}</td>
-            </tr>
-            <tr>
-                <th>Logo_url</th>
-                <td>{{ client.logoUrl }}</td>
-            </tr>
-            <tr>
-                <th>Url</th>
-                <td>{{ client.url }}</td>
-            </tr>
-            <tr>
-                <th>Dpo</th>
-                <td>{{ client.dpo }}</td>
-            </tr>
-            <tr>
-                <th>Technical_contact</th>
-                <td>{{ client.technicalContact }}</td>
-            </tr>
-            <tr>
-                <th>Commercial_contact</th>
-                <td>{{ client.commercialContact }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_clients_index') }}">back to list</a>
-
-    <a href="{{ path('app_clients_edit', {'id': client.id}) }}">edit</a>
-
-    {{ include('clients/_delete_form.html.twig') }}
+	<section class="container">
+		<div class="row">
+			<a href="{{ path('app_security_clientlist') }}">Liste partenaires</a>
+		</div>
+		<div class="row">
+			<div class='col border rounded p2'>
+				<div class="row">
+					<div class="col-2">{{ client.logoUrl }}
+					</div>
+					<div class="col-5">
+						<p>{{ client.id }}</p>
+						<p>{{ client.name }}</p>
+						<p>{{ client.shortDescription }}</p>
+					</div>
+					<div class="col-5">
+						<p>{{ client.url }}</p>
+						<p>{{ client.dpo }}</p>
+						<p>{{ client.technicalContact }}</p>
+						<p>{{ client.commercialContact }}</p>
+					</div>
+				</div>
+				<div class="row m-2">
+					{% if client.active == true %}
+						<div class="form-check form-switch">
+							<input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheck{{client.id}}" checked disabled>
+							<label class="form-check-label" for="flexSwitchCheck{{client.id}}">Actif ?</label>
+						</div>
+					{% else %}
+						<div class="form-check form-switch">
+							<input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheck{{client.id}}" disabled>
+							<label class="form-check-label" for="flexSwitchCheck{{client.id}}">Actif ?</label>
+						</div>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+		{% for branche in branches %}
+			<div class="row">
+				<div class='col border rounded p2'>
+					<div class="row">
+						<div class="col-2">{{ client.logoUrl }}
+						</div>
+						<div class="col-5">
+							<a href="{{ path('app_branches_edit', {'id': branche.id}) }}">
+								{{ branche.name }}
+							</a>
+							{% set displayClient_grant_id = '' %}
+							{% set displayClient_grant_perms = '' %}
+							{% for client_grant in clients_grants %}
+								{% if client_grant.branch is null %}
+									{% set displayClient_grant_id = client_grant.id %}
+									{% set displayClient_grant_perms = client_grant.perms %}
+								{% else %}
+									{% if client_grant.branch.id == branche.id %}
+										{% set displayClient_grant_id = client_grant.id %}
+										{% set displayClient_grant_perms = client_grant.perms %}
+									{% endif %}
+								{% endif %}
+							{% endfor %}
+							<div>
+								<a href="{{ path('app_clients_grants_edit', {'id': displayClient_grant_id}) }}">
+									{{ displayClient_grant_id }}
+								</a>
+							</div>
+							<p>{{ displayClient_grant_perms }}</p>
+						</div>
+					</div>
+					<div class="row m-2">
+						{% if branche.active == true %}
+							<div class="form-check form-switch">
+								<input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheck{{branche.id}}" checked disabled>
+								<label class="form-check-label" for="flexSwitchCheck{{branche.id}}">Actif ?</label>
+							</div>
+						{% else %}
+							<div class="form-check form-switch">
+								<input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheck{{branche.id}}" disabled>
+								<label class="form-check-label" for="flexSwitchCheck{{branche.id}}">Actif ?</label>
+							</div>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+	</section>
 {% endblock %}

@@ -68,6 +68,15 @@ final class Version20221025125504 extends AbstractMigration
         (18, 1, 12000, 7, 'Capdenac-Gare'),
         (19, 1, 54000, 8, 'Nancy'),
         (20, 1, 67000, 8, 'Strasbourg')");
+        $this->addSql("INSERT INTO `clients_grants` (`id`, `client_id`, `perms`, `branch_id`) VALUES
+        (1, 1, '{ \"members_read\": 0, \"members_write\": 0, \"members_payment_schedules_read\": 0, \"members_products_read\": 0, \"members_schedules_read\": 0, \"members_add\": 0, \"payment_schedules_read\": 0, \"payment_schedules_write\": 0, \"members_statistic_read\": 0, \"payment_day_read\": 0 }', NULL),
+        (2, 2, '{ \"members_read\": 0, \"members_write\": 0, \"members_payment_schedules_read\": 0, \"members_products_read\": 0, \"members_schedules_read\": 0, \"members_add\": 0, \"payment_schedules_read\": 0, \"payment_schedules_write\": 0, \"members_statistic_read\": 0, \"payment_day_read\": 0 }', NULL),
+        (3, 3, '{ \"members_read\": 0, \"members_write\": 0, \"members_payment_schedules_read\": 0, \"members_products_read\": 0, \"members_schedules_read\": 0, \"members_add\": 0, \"payment_schedules_read\": 0, \"payment_schedules_write\": 0, \"members_statistic_read\": 0, \"payment_day_read\": 0 }', NULL),
+        (4, 4, '{ \"members_read\": 0, \"members_write\": 0, \"members_payment_schedules_read\": 0, \"members_products_read\": 0, \"members_schedules_read\": 0, \"members_add\": 0, \"payment_schedules_read\": 0, \"payment_schedules_write\": 0, \"members_statistic_read\": 0, \"payment_day_read\": 0 }', NULL),
+        (5, 5, '{ \"members_read\": 0, \"members_write\": 0, \"members_payment_schedules_read\": 0, \"members_products_read\": 0, \"members_schedules_read\": 0, \"members_add\": 0, \"payment_schedules_read\": 0, \"payment_schedules_write\": 0, \"members_statistic_read\": 0, \"payment_day_read\": 0 }', NULL),
+        (6, 6, '{ \"members_read\": 0, \"members_write\": 0, \"members_payment_schedules_read\": 0, \"members_products_read\": 0, \"members_schedules_read\": 0, \"members_add\": 0, \"payment_schedules_read\": 0, \"payment_schedules_write\": 0, \"members_statistic_read\": 0, \"payment_day_read\": 0 }', NULL),
+        (7, 7, '{ \"members_read\": 0, \"members_write\": 0, \"members_payment_schedules_read\": 0, \"members_products_read\": 0, \"members_schedules_read\": 0, \"members_add\": 0, \"payment_schedules_read\": 0, \"payment_schedules_write\": 0, \"members_statistic_read\": 0, \"payment_day_read\": 0 }', NULL),
+        (8, 8, '{ \"members_read\": 0, \"members_write\": 0, \"members_payment_schedules_read\": 0, \"members_products_read\": 0, \"members_schedules_read\": 0, \"members_add\": 0, \"payment_schedules_read\": 0, \"payment_schedules_write\": 0, \"members_statistic_read\": 0, \"payment_day_read\": 0 }', NULL);");
     }
 
     public function down(Schema $schema): void

@@ -56,8 +56,7 @@ class BranchesController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $branchesRepository->save($branch, true);
-
-            return $this->redirectToRoute('app_branches_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_clients_show', ['id' => $branch->getClient()->getId()], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('branches/edit.html.twig', [
@@ -69,7 +68,7 @@ class BranchesController extends AbstractController
     #[Route('/{id}', name: 'app_branches_delete', methods: ['POST'])]
     public function delete(Request $request, Branches $branch, BranchesRepository $branchesRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$branch->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $branch->getId(), $request->request->get('_token'))) {
             $branchesRepository->remove($branch, true);
         }
 

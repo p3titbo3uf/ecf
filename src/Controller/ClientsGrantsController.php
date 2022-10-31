@@ -57,7 +57,7 @@ class ClientsGrantsController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $clientsGrantsRepository->save($clientsGrant, true);
 
-            return $this->redirectToRoute('app_clients_grants_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_clients_show', ['id' => $clientsGrant->getClient()->getId()], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('clients_grants/edit.html.twig', [
