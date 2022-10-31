@@ -19,17 +19,16 @@ vider le cache : `php bin/console cache:clear --env=dev`
 
 # Table des matières
 
-    [go to Notion](#notion)
-    [go to Description](#description)
-    Exigences
-    Récupération du projet
-    Installation
-    Installation des dépendances
-    Création de la base de donnée
-    Création des tables
-    Insertions des jeux de données
-    Installation du serveur
-    Login
+[Notion](#notion)
+[Description](#description)
+[Exigences](#exigences)
+[Récupération du projet](#recuperation-du-projet)
+[Installation](#installation)
+[Installation des dépendances](#installation-des-dependances)
+[Création de la base de donnée](#creation-de-la-base-de-donnees)
+[Création des tables](#creation-des-tables)
+[Utilisation](#utilisation)
+[Tester le projet](#tester-le-projet)
 
 # Notion
 
@@ -46,48 +45,44 @@ Les documents annexes sont disponibles dans le dossier ANNEXES :
 
 # Exigences
 
-    Téléchargez Symfony CLI
+## Téléchargez Symfony CLI
 
-    Pour vérifier si vous réunissez toutes les conditions requises avant d'installer ce projet :
+Pour vérifier si vous réunissez toutes les conditions requises avant d'installer ce projet :
+`symfony check:requirements`
 
-$ symfony check:requirements
+## Mais surtout téléchargez Composer
 
-    Mais surtout téléchargez Composer
+Vous trouverez facielement sur internet une documtation pour l'installer avec une version compatible avec votre environnement de travail.
 
-$ php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-$ php -r "if (hash_file('sha384', 'composer-setup.php') === '906a84df04cea2aa72f40b5f787e49f22d4c2f19492ac310e8cba5b96ac8b64115ac402c8cd292b8a03482574915d1a8') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
-$ php composer-setup.php
-$ php -r "unlink('composer-setup.php');"
+# Récupération du projet
 
-# Recuperation du projet
-
-$ git clone https://github.com/p3titbo3uf/ecf
+`git clone https://github.com/p3titbo3uf/ecf`
 
 # Installation
 
-    Déplacement dans le dossier
+Déplacement dans le dossier
 
-$ cd ECF
+`cd ecf`
 
-# Installation des dependances
+# Installation des dépendances
 
-$ composer install
+`composer install`
 
-# Creation de la base de donnees
+# Création de la base de donnees
 
-$ symfony console doctrine:database:create
+`php bin/console doctrine:database:create`
 
-# Creation des tables
+# Création des tables
 
-$ symfony console doctrine:migrations:migrate
+`php bin/console doctrine:migrations:migrate`
 OU
-$ symfony console doctrine:schema:update --force
+`php bin/console doctrine:schema:update --force`
 
 # Utilisation
 
 Pour lancer le serveur :
 
-symfony server:start
+`php bin/console server:start`
 
 # Tester le projet
 
