@@ -17,11 +17,11 @@ symfony cast verify email pour envoyer un courriel
 list all routes : `logo eco itlogo eco it`
 vider le cache : `php bin/console cache:clear --env=dev`
 
-Table des matières
+# Table des matières
 
     Notion
     Description
-    Vérification des conditions requises
+    Exigences
     Récupération du projet
     Installation
     Installation des dépendances
@@ -44,7 +44,7 @@ Les documents annexes sont disponibles dans le dossier ANNEXES :
     Documentation technique
     Wireframes
 
-Exigences
+# Exigences
 
     Téléchargez Symfony CLI
 
@@ -61,7 +61,7 @@ $ php -r "unlink('composer-setup.php');"
 
 # Recuperation du projet
 
-$ git clone https://github.com/heavnzor/ECF
+$ git clone https://github.com/p3titbo3uf/ecf
 
 # Installation
 
@@ -83,18 +83,14 @@ $ symfony console doctrine:migrations:migrate
 OU
 $ symfony console doctrine:schema:update --force
 
-Insertion des jeux de donnees
-
-$ symfony console doctrine:fixtures:load
-
-Utilisation
+# Utilisation
 
 Pour lancer le serveur :
 
 symfony server:start
 
-Tester le projet
+# Tester le projet
 
 Pour obtenir des liens de connexions :
 
-contactez-moi par email : heavnzor@protonmail.com
+contactez-moi par courriel : petit.boeuf@laposte.net
